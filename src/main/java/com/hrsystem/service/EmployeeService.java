@@ -12,10 +12,12 @@ public interface EmployeeService {
 	EmployeeDTO createEmployee(EmployeeDTO employee) throws Exception;
 
 	List<EmployeeDTO> getAllEmployees();
+	EmployeeDTO getEmployeeInfos(Long id);
 
 	EmployeeDTO updateEmployee(EmployeeDTO employee);
 
 	void deleteEmployee(Long id);
+
 	
 
 }

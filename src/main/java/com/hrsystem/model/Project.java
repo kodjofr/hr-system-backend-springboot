@@ -1,10 +1,7 @@
-
 package com.hrsystem.model;
-
 
 import java.sql.Date;
 import java.util.List;
-
 import jakarta.persistence.*;
 import lombok.Data;
 

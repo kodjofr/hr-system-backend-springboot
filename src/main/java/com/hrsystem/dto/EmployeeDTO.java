@@ -8,6 +8,7 @@ public class EmployeeDTO {
 	private Long employeeId;
 	private String firstName;
 	private String lastName;
+	private String departmentName;
 	private String email;
 
 	

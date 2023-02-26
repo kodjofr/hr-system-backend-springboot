@@ -11,25 +11,29 @@ import com.hrsystem.service.EmployeeService;
 
 
 @RestController
-@RequestMapping("api/employees")
+@RequestMapping("api/employee")
 public class EmployeeController {
 	
 	@Autowired
 	private EmployeeService employeeService;
-	
-	
+
 	@PostMapping
 	public EmployeeDTO createEmployee(@RequestBody EmployeeDTO employeeDto) throws Exception{
 		return employeeService.createEmployee(employeeDto);
 	}
 	
-	@GetMapping
+	@GetMapping("/all")
 	public List<EmployeeDTO> getAllEmployees() {
 		return employeeService.getAllEmployees();	
 	}
+
+	@GetMapping("{id}")
+	public EmployeeDTO getEmployeeInfos(@PathVariable("id") Long id) {
+		return employeeService.getEmployeeInfos(id);
+	}
 	
 	
-	@PutMapping
+	@PutMapping("/update")
 	public EmployeeDTO updateEmployee(@RequestBody EmployeeDTO employeeDto) {
 		return employeeService.updateEmployee(employeeDto);
 	}

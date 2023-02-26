@@ -64,9 +64,22 @@ public class EmployeeServiceImpl implements EmployeeService{
 						.collect(Collectors.toList());
 		
 	}
-	
-	
-	
+
+	@Override
+	public EmployeeDTO getEmployeeInfos(Long id) {
+		Optional<Employee> optionalEmployee = employeeRepository.findById(id);
+
+		if(optionalEmployee.isPresent()) {
+			Employee e = optionalEmployee.get();
+		} else {
+
+
+
+		}
+		return null;
+	}
+
+
 	// UPDATE
 
 	@Override
