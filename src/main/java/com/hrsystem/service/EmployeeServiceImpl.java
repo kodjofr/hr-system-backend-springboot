@@ -16,7 +16,6 @@ import com.hrsystem.repository.TaskRepository;
 
 @Component
 public class EmployeeServiceImpl implements EmployeeService{
-	
 	@Autowired
 	private EmployeeRepository employeeRepository;
 	
@@ -37,7 +36,6 @@ public class EmployeeServiceImpl implements EmployeeService{
 		e1.setLastName(employeeDTO.getLastName());
 		e1.setEmail(employeeDTO.getEmail());
 
-
 		if (!employeeRepository.existsByEmail(e1.getEmail())) {
 			employeeRepository.save(e1);
 
@@ -50,10 +48,8 @@ public class EmployeeServiceImpl implements EmployeeService{
 		}
 		return employeeDTO;
 	}
-	
-	
+
 	// READ
-	
 	public List<EmployeeDTO> getAllEmployees() {
 		
 		List <Employee> employees = employeeRepository.findAll();
@@ -62,7 +58,6 @@ public class EmployeeServiceImpl implements EmployeeService{
 						.map(employee -> modelMapper
 						.map(employee, EmployeeDTO.class))
 						.collect(Collectors.toList());
-		
 	}
 
 	@Override
@@ -70,15 +65,15 @@ public class EmployeeServiceImpl implements EmployeeService{
 		Optional<Employee> optionalEmployee = employeeRepository.findById(id);
 
 		if(optionalEmployee.isPresent()) {
-			Employee e = optionalEmployee.get();
+			Employee employee = optionalEmployee.get();
+			EmployeeDTO employeeDto = modelMapper.map(employee,EmployeeDTO.class);
+
+			return employeeDto;
+
 		} else {
-
-
-
+			return null;
 		}
-		return null;
 	}
-
 
 	// UPDATE
 
